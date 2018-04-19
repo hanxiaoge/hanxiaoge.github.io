@@ -24,14 +24,20 @@
 <meta property="og:site_name" content="含笑书苑">
 <meta property="og:description" content="早就有搭一个自己的博客想法，最近终于下定决心花一天时间搭建了这个个人博客。考虑了许多方案，最后决定采用Hexo框架，并将其部署在github page。Hexo 是一个快速、简洁且高效的博客框架。 Hexo  使用 Markdown解析文章，在几秒内，即可利用靓丽的主题生成静态网页。github page是一个静态的网站托管服务，旨在直接从GitHub库中托管您的个人、组织或项目页面。 准备工">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/04/17/article-title/01.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/17/article-title/02.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/17/article-title/03.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/17/article-title/04.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/17/article-title/05.png">
 <meta property="og:image" content="http://yoursite.com/2018/04/17/article-title/06.png">
-<meta property="og:updated_time" content="2018-04-18T15:25:13.359Z">
+<meta property="og:image" content="http://yoursite.com/2018/04/17/article-title/07.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/17/article-title/08.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/17/article-title/09.png">
+<meta property="og:updated_time" content="2018-04-19T03:11:01.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用github和Hexo框架搭建免费个人博客 | 含笑书苑">
 <meta name="twitter:description" content="早就有搭一个自己的博客想法，最近终于下定决心花一天时间搭建了这个个人博客。考虑了许多方案，最后决定采用Hexo框架，并将其部署在github page。Hexo 是一个快速、简洁且高效的博客框架。 Hexo  使用 Markdown解析文章，在几秒内，即可利用靓丽的主题生成静态网页。github page是一个静态的网站托管服务，旨在直接从GitHub库中托管您的个人、组织或项目页面。 准备工">
-<meta name="twitter:image" content="http://yoursite.com/2018/04/17/article-title/02.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/17/article-title/01.png">
     
     
     
@@ -214,29 +220,37 @@ classes that you can use:
 
   <section id="post-content" class="article-content post">
     <p>  早就有搭一个自己的博客想法，最近终于下定决心花一天时间搭建了这个个人博客。考虑了许多方案，最后决定采用Hexo框架，并将其部署在github page。Hexo 是一个快速、简洁且高效的博客框架。 <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo</a>  使用 Markdown解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<a href="https://help.github.com/articles/what-is-github-pages" target="_blank" rel="noopener">github page</a>是一个静态的网站托管服务，旨在直接从GitHub库中托管您的个人、组织或项目页面。</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><pre><code>想要在github上部署网页，需要要有github账号，并在PC上安装npm、git和node.js，安装教程网上有很多，这里就不一一赘述了。
-</code></pre><h3 id="设置github-page"><a href="#设置github-page" class="headerlink" title="设置github page"></a>设置github page</h3><pre><code> 登录了github之后，新建一个仓库，并以yourgithub.github.io命名。见下图(因为我已经有这个命名仓库，所以出现红色叹号)：
-
-![Create Repository](article-title/01.png)
-</code></pre><p> 点进新建的仓库，点击Settings按钮，拉到下面。可看到如下画面：</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>想要在github上部署网页，需要要有github账号，并在PC上安装npm、git和node.js，安装教程网上有很多，这里就不一一赘述了。</p>
+<h3 id="设置github-page"><a href="#设置github-page" class="headerlink" title="设置github page"></a>设置github page</h3><p>登录了github之后，新建一个仓库，并以yourgithub.github.io命名。见下图(因为我已经有这个命名仓库，所以出现红色叹号)：</p>
+<p><img src="/2018/04/17/article-title/01.png" alt="Create Repository"></p>
+<p>点进新建的仓库，点击Settings按钮，拉到下面。可看到如下画面：</p>
 <p> <img src="/2018/04/17/article-title/02.png" alt="github page"></p>
-<p> 可以看到绿色背景部分，说明github page已经部署好，点击蓝色链接可以访问。<br>   部署好github page 之后，可以将github 部分先放一边。接下来进行Hexo框架的设置。</p>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>   首先在你喜欢的地方创建一个文件夹（你以后写博客的时候需要在这个文件夹中操作），然后通过命令行进入这个文件夹，并在这个文件中安装Hexo。<br>   <img src="/2018/04/17/article-title/03.png" alt="install Hexo"><br>   安装完成后可以输入hexo -v检查时候安装成功</p>
-<p>   <code></code><br>   D:\blog&gt;hexo -v</p>
-<p>hexo: 3.7.1<br>hexo-cli: 1.1.0<br>os: Windows_NT 10.0.16299 win32 x64<br>http_parser: 2.7.0<br>node: 7.7.4<br>v8: 5.5.372.42<br>uv: 1.11.0<br>zlib: 1.2.11<br>ares: 1.10.1-DEV<br>modules: 51<br>openssl: 1.0.2k<br>icu: 58.2<br>unicode: 9.0<br>cldr: 30.0.3<br>tz: 2016j<br>   <code></code></p>
-<p>   安装成功后，输入hexo 是新建一个网站，所以可能需要花一些时间.请耐心等待。</p>
-<p>   <code>D:\blog&gt;hexo init</code></p>
-<pre><code>![init Hexo](article-title/04.png)
-</code></pre><p>   初始化完成后，输入npm install，安装所需要的组件，结束后输入hexo g，生成静态文件；然后输入hexo s启动服务器。</p>
-<pre><code>``
-D:\blog&gt;npm install
-D:\blog&gt;hexo g
-D:\blog&gt;hexo s
-</code></pre><p>   <code></code></p>
-<pre><code>![server Hexo](article-title/05.png)
-</code></pre><p>   接下来到了激动人心的时候，复制上图中的链接在浏览器中打开可看到下面的画面，说明Hexo在本地服务器部署成功。如果页面一直无法跳转，那么可能是端口被占用了。输入ctrl+c停止服务器，然后输入“hexo server -p 端口号”来改变端口号吧。</p>
-<p>   <img src="/2018/04/17/article-title/06.png" alt="server Hexo"></p>
-<h3 id="部署到github-page"><a href="#部署到github-page" class="headerlink" title="部署到github page"></a>部署到github page</h3>
+<p>可以看到绿色背景部分，说明github page已经部署好，点击蓝色链接可以访问。<br>部署好github page 之后，可以将github 部分先放一边。接下来进行Hexo框架的设置。</p>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>首先在你喜欢的地方创建一个文件夹（你以后写博客的时候需要在这个文件夹中操作），然后通过命令行进入这个文件夹，并在这个文件中安装Hexo。<br> <img src="/2018/04/17/article-title/03.png" alt="install Hexo"><br> 安装完成后可以输入<code>hexo -v</code>检查是否安装成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">D:\blog&gt;hexo -v</span><br><span class="line">   </span><br><span class="line">hexo: 3.7.1</span><br><span class="line">hexo-cli: 1.1.0</span><br><span class="line">os: Windows_NT 10.0.16299 win32 x64</span><br><span class="line">http_parser: 2.7.0</span><br><span class="line">node: 7.7.4</span><br><span class="line">v8: 5.5.372.42</span><br><span class="line">uv: 1.11.0</span><br><span class="line">zlib: 1.2.11</span><br><span class="line">ares: 1.10.1-DEV</span><br><span class="line">modules: 51</span><br><span class="line">openssl: 1.0.2k</span><br><span class="line">icu: 58.2</span><br><span class="line">unicode: 9.0</span><br><span class="line">cldr: 30.0.3</span><br><span class="line">tz: 2016j</span><br></pre></td></tr></table></figure>
+<p>安装成功后，输入hexo 是新建一个网站，所以可能需要花一些时间.请耐心等待。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\blog&gt;hexo init</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/04/17/article-title/04.png" alt="init Hexo"></p>
+<p>   初始化完成后，输入<code>npm install</code>，安装所需要的组件，结束后输入<code>hexo g</code>，生成静态文件；然后输入<code>hexo s</code>启动服务器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">D:\blog&gt;npm install</span><br><span class="line">D:\blog&gt;hexo g</span><br><span class="line">D:\blog&gt;hexo s</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/04/17/article-title/05.png" alt="server Hexo"></p>
+<p>接下来到了激动人心的时候，复制上图中的链接在浏览器中打开可看到下面的画面，说明Hexo在本地服务器部署成功。如果页面一直无法跳转，那么可能是端口被占用了。输入ctrl+c停止服务器，然后输入<code>hexo server -p</code>端口号”来改变端口号吧。</p>
+<p><img src="/2018/04/17/article-title/06.png" alt="server Hexo"></p>
+<p>  这个时候你就可以新建自己的博客了。在工作台执行命令 <code>hexo new post &quot;article-title&quot;</code>   便可以新建一篇博客。这时候，你可以在文件夹_posts目录下找到你创建的博客文件，然后可以用Markdown语法规则编写博客。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post <span class="string">"article-title"</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2018/04/17/article-title/07.png" alt="blog"></p>
+<p> 你新建的博客文档是没有文件夹的，这个文件夹是用来盛放博客中的图片文件的，如果你有需要你可安装一个扩展：<code>npm install hexo-asset-image --save</code>，安装完成后新建的博客就有文件夹了，之前创建的博文可以手动添加文件夹。<br> 此时，运行服务器<code>hexo s</code>,刷新刚才的网页，便可看到我们创建的博文。</p>
+<h3 id="部署到github-page"><a href="#部署到github-page" class="headerlink" title="部署到github page"></a>部署到github page</h3><p>  如果你已经配置了github 的SSH秘钥，可以本地操作远程库了，就可以进行下面的步骤了（如果没有配置，就先进行配置，配置教程网上很多）。首先配置Deployment，在我们安装Hexo的文件夹中找到_config.yml文件，修改deploy属性（在下方）。<br>修改为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy：</span><br><span class="line">	<span class="built_in">type</span>：git</span><br><span class="line">	repsitory:git@github.com:yourUsername/yourUsername.github.io.git</span><br><span class="line">	branch:master</span><br></pre></td></tr></table></figure>
+<p>将repsitory属性的yourUsername改为你的github用户名。<br>  在部署之前还需要添加一个用于在github上部署网站的扩展，其命令为：<code>npm install hexo-deployer-git --save</code> ,添加完成后<br>运行<code>hexo d -g</code>,完成后便把Hexo站点部署到了github上面。</p>
+<h3 id="更换默认主题"><a href="#更换默认主题" class="headerlink" title="更换默认主题"></a>更换默认主题</h3><p>部署完成后的网站页面是Hexo框架的默认主题，如果你不喜欢，可以更换掉默认主题，Hexo官网有<a href="https://hexo.io/themes/" target="_blank" rel="noopener">主题专栏</a>,也可以在网上找你喜欢的开源主题。本博客采用的是<a href="https://github.com/letiantian/huno" target="_blank" rel="noopener">Huno主题</a>，在此感谢作者<a href="https://github.com/letiantian" target="_blank" rel="noopener">letiantian</a> （该主题下的评论功能扩展和mathjax公式支持已经不能正常时候了,请选择该主题的同学自行寻找代替方案），找到主题后下载并保存到themes文件夹下：</p>
+<p><img src="/2018/04/17/article-title/08.png" alt="themes"></p>
+<p>下载完成后，修改主文件夹下的_config.yml配置文件，将themes属性修改为你选择的主题名：themes：yourthemes</p>
+<p><img src="/2018/04/17/article-title/09.png" alt="themes"></p>
+<p>在操作台运行 <code>hexo s</code>，查看你的新主题。</p>
+<h3 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h3><p>  主题的布局可能不符合你的需求，这时候就需要你按照主题的说明文件对主题进行调整，此时主要修改主题文件夹下的_config.yml配置文件，具体请参考主题说明文档。</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>  了解一下Hexo框架的相关知识和markdown的语法结构对主题的修改后后期的博文写作很有帮助，建议大家动手之前和操作中多查看。另外，如果你觉的这篇博文对你有帮助，不妨带个赞再走，如有问题可留言。</p>
+
   </section>
 
   <section class="post-comments">
