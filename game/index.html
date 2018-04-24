@@ -1,0 +1,209 @@
+<html>
+
+	<head>
+		
+
+
+		 <style>
+		*{margin:0 0;padding:0 0;}
+		
+		.c {margin :1px;width:19px;height:19px;background:red;position:absolute;}
+		.d {margin :1px;width:19px;height:19px;background:gray;position:absolute;}
+		.h {padding-top:30px;margin-left:auto;margin-right:auto;background:url('youxiji2.png'); position::relative; width:316px;height:560px}
+		.show{position:absolute;width:316px;height:400px;}
+		.f {padding-top:20px;margin-left:auto;margin-right:auto;background:url('wangge2.png'); position:relative;width:200px;height:380px;}
+		.control {margin-left:auto;margin-right:auto; position:absolute; background:;width:317px;height:150px;top:445px}
+		.ctrl1{margin-top:3px;position:relative;width:155px;height:160px; float:left;}
+		.up{margin:0 56px;position:relative;width:48px;height:35px; background:url('button.png') -40px -1px no-repeat;float:left;}
+		.left{position:relative;margin-left:16px;width:48px;height:39px; background:url('button.png')0 -42px  no-repeat;float:left;}
+		.right{position:relative;margin-left:33px;width:48px;height:39px; background:url('button.png')-80px -42px  no-repeat;float:left;}
+		.down{margin:0 56px;position:relative;width:48px;height:39px; background:url('button.png') -40px -84px no-repeat;float:left;}
+		.ctrl2{position:relative;width:155px;height:150px; float:left;}
+		.rotate{position:relative;width:76px;height:80px;background:url('button.png') -177px -42px no-repeat;float:left;margin:38px 0 0 38px;}
+		.btn:hover{
+			background:none;
+         
+		}
+		</style>
+	</head>
+<body>
+	<div class="h">
+		<div class="show"></div>
+		<div class="control">
+			<div class="ctrl1">
+				<div class="up btn"></div>
+				<div class="left btn"></div>
+				<div class="right btn"></div>
+				<div class="down btn"></div>
+			</div>
+			<div class="ctrl2">
+				<div class="rotate btn"></div>
+			</div>
+		</div>
+	</div>
+	
+
+
+			
+			
+</body>
+<html>
+
+
+<script>
+    var over=false,shapes=("0,1,1,1,2,1,3,1;1,0,1,1,1,2,2,2;2,0,2,1,2,2,1,2;0,1,1,1,1,2,2,2;1,2,2,2,2,1,3,1;1,1,2,1,1,2,2,2;0,2,1,2,1,1,2,2").split(";");    <!--形状快-->
+    <!--创建一个div盒子-->
+    function create(tag,css){
+        var elm=document.createElement(tag);
+        elm.className = css;
+        document.body.appendChild(elm);
+        return elm;}
+
+
+    function Tetris(c, t, x, y){
+        var c=c?c:"c";
+        this.divs = [create("div",c),create("div",c),create("div",c),create("div",c)];<!--初始化方块形状-->
+
+		
+        this.reset = function(){ 
+			
+
+		
+            this.x = typeof x != 'undefined'?x:3; <!--初始方块离左边界的距离为3个格-->
+            this.y = typeof y != 'undefined'?y:0; <!--初始方块离上边界的距离数为0-->
+            this.shape = t?t:shapes[Math.floor(Math.random()*(shapes.length-0.00001))].split(",");<!--随机选择一种形状-->
+           
+		   this.show();
+            if(this.field&&this.field.check(this.shape,this.x,this.y,'v')=='D'){
+                over=true;
+                this.field.fixShape(this.shape,this.x,this.y);
+              var again=confirm('游戏结束，是否重新开始？');
+			 if(again==true){
+			 location.assign(location) 
+			 }
+			 
+			  }}
+				
+        this.show = function(){<!--初始化显示方块-->
+            for(var i in this.divs){
+			
+                this.divs[i].style.left = (this.shape[i*2]*1+this.x)*20+'px';<!--为方块设置初始位置-->
+                this.divs[i].style.top = (this.shape[i*2+1]*1+this.y)*20+'px';
+				document.getElementsByClassName('f')[0].appendChild(this.divs[i]);
+				}
+				}
+				
+        this.field=null;
+        this.hMove = function(step){<!--水平方向移动-->
+            var r = this.field.check(this.shape,this.x- -step,this.y,'h');
+            if(r!='N'&&r==0){
+                this.x-=-step;
+                this.show();}}
+        this.vMove = function(){<!--垂直方向移动-->
+            if(this.field.check(this.shape,this.x,this.y- -1,'v')=='N'){
+                this.y++;
+                this.show();}
+            else{
+                this.field.fixShape(this.shape,this.x,this.y);
+                this.field.findFull();
+                this.reset();}}
+        this.rotate = function(){<!--旋转方块-->
+            var s=this.shape;
+            var newShape=[3-s[1],s[0],3-s[3],s[2],3-s[5],s[4],3-s[7],s[6]];
+            var r = this.field.check(newShape,this.x,this.y,'h');
+            if(r=='D')return;
+            if(r==0){
+                this.shape=newShape;
+                this.show();}
+            else if(this.field.check(newShape,this.x-r,this.y,'h')==0){
+                this.x-=r;
+                this.shape=newShape;
+                this.show();}}
+        this.reset();}
+
+
+    function Field(w,h){<!--创建背景区域-->
+        this.width = w?w:10;
+        this.height = h?h:19;
+		var score=0;
+        this.show = function(){
+         var f = create("div","f");
+            f.style.width=this.width*20+'px';
+            f.style.height=this.height*20+'px';
+			 document.getElementsByClassName("show")[0].appendChild(f);
+			
+
+			}
+        this.findFull = function(){
+		<!--判断是否有行被填满，如果有则删除-->
+            for(var l=0;l<this.height+1;l++){
+                var s=0;
+                for(var i=0;i<this.width;i++){
+                    s+=this[l*this.width+i]?1:0;}
+                if(s==this.width){
+                    this.removeLine(l);
+					score++;
+					
+					}}}
+		<!--删除指定行-->
+        this.removeLine = function(line){
+            for(var i=0;i<this.width;i++){
+                document.getElementsByClassName("f")[0].removeChild(this[line*this.width+i]);}
+            for(var l=line;l>0;l--){
+                for(var i=0;i<this.width;i++){
+                    this[l*this.width- -i]=this[(l-1)*this.width- -i];
+                    if(this[l*this.width- -i])this[l*this.width- -i].style.top = l*20+'px';}}}
+        this.check = function(shape, x, y, d){
+            var r1=0,r2='N';
+			// 判断是否碰撞
+            for(var i=0;i<8;i+=2){
+                if(shape[i]- -x < 0 && shape[i]- -x <r1)
+                    {r1 = shape[i]- -x;}
+                else if(shape[i]- -x>=this.width && shape[i]- -x>r1)
+                    {r1 = shape[i]- -x;}
+				// 检查是否越出边界是否到达极限高度
+                if(shape[i+1]- -y-1>=this.height || this[shape[i]- -x- -(shape[i+1]- -y)*this.width])
+                    {r2='D'}}
+            if(d=='h'&&r2=='N')return r1>0?r1-this.width- -1:r1;
+            else return r2;}
+			
+		// 用灰色方块替换红色方块，并在容器中记录灰色方块的位置	
+        this.fixShape = function(shape,x,y){
+            var d=new Tetris("d",shape,x,y);
+            d.show();
+            for(var i=0;i<8;i+=2){
+                this[shape[i]- -x- -(shape[i+1]- -y)*this.width]=d.divs[i/2];}}}
+
+
+    var f = new Field();
+    f.show();
+    var s = new Tetris();
+    s.field = f;
+    s.show();
+    var btns=document.getElementsByClassName("btn");
+	btns[0].addEventListener("click",function(){ s.rotate();});
+    btns[1].addEventListener("click", function(){s.hMove(-1);});
+    btns[2].addEventListener("click",function(){s.hMove(1);});
+    btns[3].addEventListener("click", function(){ s.vMove();});
+    btns[4].addEventListener("click",function(){ s.rotate();});
+	window.setInterval("if(!over)s.vMove();",500);
+
+
+    document.onkeydown = function(e){
+        if(over)return;
+        var e = window.event ? window.event : e;
+
+		switch(e.keyCode){
+        case 38: //up
+            s.rotate();
+            break;
+        case 40: //down
+            s.vMove();
+            break;
+        case 37: //left
+            s.hMove(-1);
+            break;
+        case 39: //right
+            s.hMove(1);
+            break;}}
+</script>
